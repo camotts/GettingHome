@@ -4,24 +4,23 @@ using UnityEngine;
 
 public class MinimapSymbol : MonoBehaviour
 {
-    [SerializeField] private float Y = 200;
-
+    [SerializeField] private float Y = 1700;
     [SerializeField] private float xScale = 5;
-
+    [SerializeField] private float yScale = 5;
     [SerializeField] private float zScale = 5;
     // Start is called before the first frame update
     void Start()
     {
-        var currGlobalY = transform.position.y;
-        var offset = Y - currGlobalY;
-        transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y + offset, transform.localPosition.z);
+        var dist = Y - transform.position.y;
+        transform.position = new Vector3(transform.position.x, transform.localPosition.y + dist, transform.position.z);
         
-        transform.localScale = new Vector3(xScale, 0, zScale);
+        transform.localScale = new Vector3(xScale, yScale, zScale);
     }
 
     // Update is called once per frame
     void Update()
     {
-       
+        //transform.rotation.Set(0,PlayerManager.player.transform.rotation.eulerAngles.y,0,0);
+        transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.eulerAngles.x, PlayerManager.player.transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z));
     }
 }

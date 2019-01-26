@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class MinimapController : MonoBehaviour
 {
-    [SerializeField] private float Y = 150;
+    [SerializeField] private float Y = 1800.0f;
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        transform.localPosition = new Vector3(transform.localPosition.x, Y, transform.localPosition.z);
+        var dist = Y - transform.position.y;
+        transform.position = new Vector3(transform.position.x, transform.localPosition.y + dist, transform.position.z);
+        transform.rotation = Quaternion.Euler(new Vector3(90, 0, 0));
     }
 }

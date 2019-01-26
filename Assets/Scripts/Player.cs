@@ -185,6 +185,7 @@ public class Player : MonoBehaviour, Entity
             {
                 ModifyHunger(foodRef.Eat());
                 foodRef = null;
+                InteractionText.gameObject.SetActive(false);
             }
         }
     }
