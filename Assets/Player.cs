@@ -14,9 +14,11 @@ public class Player : MonoBehaviour, Entity
     [SerializeField] private float Hunger = 100;
     [SerializeField] private float Cooldown = 1;
     [SerializeField] private float TickDamage = 0.5f;
+    [SerializeField] private float HealthTick = 5;
 
     private float currCooldown;
     private IDrinkable drinkRef;
+    private IEatable foodRef;
     
     public Image HealthVisual;
     public Image HydrationVisual;
@@ -47,6 +49,9 @@ public class Player : MonoBehaviour, Entity
             {
                 Health -= TickDamage / 2;
             }
+            else if (Hydration >= 100 && Hunger >= 100) {}
+
+            Health += HealthTick;
 
             if (Random.Range(0, 100) >= 50)
             {
@@ -102,6 +107,13 @@ public class Player : MonoBehaviour, Entity
                 drinkRef = other.GetComponent<IDrinkable>();
             }
         }
+        if (other.CompareTag("Feeder"))
+        {
+            if (foodRef == null)
+            {
+                foodRef = other.GetComponent<IEatable>();
+            }
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -118,6 +130,18 @@ public class Player : MonoBehaviour, Entity
                 }
             }
         }
+        if (other.CompareTag("Feeder"))
+        {
+            if (foodRef == null) return;
+            if (Input.GetButton("Interact"))
+            {
+                Hunger += foodRef.Eat();
+                if (Hunger > 100)
+                {
+                    Hunger = 100;
+                }
+            }
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -125,6 +149,10 @@ public class Player : MonoBehaviour, Entity
         if (other.CompareTag("Hydrator"))
         {
                 drinkRef = null;
+        }
+        if (other.CompareTag("Feeder"))
+        {
+            foodRef = null;
         }
 
         if (other.GetComponents<IInteractable>().Length > 0)
