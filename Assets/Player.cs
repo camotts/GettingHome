@@ -19,7 +19,9 @@ public class Player : MonoBehaviour, Entity
     private float currCooldown;
     private IDrinkable drinkRef;
     private IEatable foodRef;
-    
+
+    public GameObject WeaponMount;
+    public GameObject Weapon;
     public Image HealthVisual;
     public Image HydrationVisual;
     public Image HungerVisual;
@@ -28,6 +30,13 @@ public class Player : MonoBehaviour, Entity
     // Start is called before the first frame update
     void Start()
     {
+        HealthVisual = GameObject.Find("GUI/HealthBar/Health").GetComponent<Image>();
+        HydrationVisual = GameObject.Find("GUI/HydrationBar/Hydration").GetComponent<Image>();
+        HungerVisual = GameObject.Find("GUI/HungerBar/Hunger").GetComponent<Image>();
+        InteractionText = GameObject.Find("GUI/Interaction").GetComponent<Text>();
+
+        InteractionText.text = "";
+        
         currCooldown = Cooldown;
         HealthVisual.fillAmount = Health/100;
         HydrationVisual.fillAmount = Hydration/100;
@@ -43,35 +52,39 @@ public class Player : MonoBehaviour, Entity
         {
             if (Hydration <= 0 || Hunger <= 0)
             {
-                Health -= TickDamage;
+                ModifyHealth(-TickDamage);
             }
             else if (Hydration <= 10 || Hunger <= 10)
             {
-                Health -= TickDamage / 2;
+                ModifyHealth(-TickDamage / 2);
             }
             else if (Hydration >= 100 && Hunger >= 100)
             {
-                Health += HealthTick;
+                ModifyHealth(HealthTick);
             }
 
             if (Random.Range(0, 100) >= 50)
             {
-                Hydration--;
-                if (Hydration < 0)
-                {
-                    Hydration = 0;
-                }
+                ModifyHydration(-1);
             }
 
             if (Random.Range(0, 100) >= 50)
             {
-                Hunger--;
-                if (Hunger < 0)
-                {
-                    Hunger = 0;
-                }
+                ModifyHunger(-1);
             }
             currCooldown = Cooldown;
+        }
+
+        if (Input.GetButton("Fire1"))
+        {
+            try
+            {
+                Weapon.GetComponent<IWeapon>().Attack();
+            }
+            catch(Exception e)
+            {
+                Debug.Log(e);
+            }
         }
 
         HealthVisual.fillAmount = Mathf.Lerp(HealthVisual.fillAmount, Health/100, Time.deltaTime);
@@ -79,13 +92,51 @@ public class Player : MonoBehaviour, Entity
         HungerVisual.fillAmount = Mathf.Lerp(HungerVisual.fillAmount, Hunger/100, Time.deltaTime);
     }
 
-    public void Damage(float hit)
+    private void ModifyHealth(float amt)
     {
-        Health -= hit;
+        Health += amt;
+        if (Health > 100)
+        {
+            Health = 100;
+        }
+
         if (Health <= 0)
         {
             die();
         }
+    }
+    
+    private void ModifyHydration(float amt)
+    {
+        Hydration += amt;
+        if (Hydration > 100)
+        {
+            Hydration = 100;
+        }
+
+        if (Hydration <= 0)
+        {
+            Hydration = 0;
+        }
+    }
+    
+    private void ModifyHunger(float amt)
+    {
+        Hunger += amt;
+        if (Hunger > 100)
+        {
+            Hunger = 100;
+        }
+
+        if (Hunger <= 0)
+        {
+            Hunger = 0;
+        }
+    }
+
+    public void Damage(float hit)
+    {
+        ModifyHealth(-hit);
     }
 
     private void die()
@@ -124,11 +175,7 @@ public class Player : MonoBehaviour, Entity
             if (drinkRef == null) return;
             if (Input.GetButton("Interact"))
             {
-                Hydration += drinkRef.Drink();
-                if (Hydration > 100)
-                {
-                    Hydration = 100;
-                }
+                ModifyHydration(drinkRef.Drink());
             }
         }
         if (other.CompareTag("Feeder"))
@@ -136,11 +183,8 @@ public class Player : MonoBehaviour, Entity
             if (foodRef == null) return;
             if (Input.GetButton("Interact"))
             {
-                Hunger += foodRef.Eat();
-                if (Hunger > 100)
-                {
-                    Hunger = 100;
-                }
+                ModifyHunger(foodRef.Eat());
+                foodRef = null;
             }
         }
     }

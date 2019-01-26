@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Tiger : MonoBehaviour
+public class Tiger : MonoBehaviour, Entity, IEnemy
 {
     private NavMeshAgent agent;
-    [SerializeField] private float Damage = 10f;
+    [SerializeField] private float DamageDeal = 10f;
     [SerializeField] private float Cooldown = 10f;
 
     private Player target;
@@ -30,7 +30,7 @@ public class Tiger : MonoBehaviour
             {
                 if (agent.remainingDistance <= 1)
                 {
-                    target.Damage(Damage);
+                    target.Damage(DamageDeal);
                 }
 
                 currCooldown = Cooldown;
@@ -38,19 +38,13 @@ public class Tiger : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void Damage(float hit)
     {
-        if (other.CompareTag("Player"))
-        {
-            target = other.GetComponent<Player>();
-        }
+        Destroy(gameObject);
     }
 
-    private void OnTriggerExit(Collider other)
+    public void SetTarget(GameObject target)
     {
-        if (other.CompareTag("Player"))
-        {
-            target = null;
-        }
+        this.target = target.GetComponent<Player>();
     }
 }
