@@ -49,9 +49,10 @@ public class Player : MonoBehaviour, Entity
             {
                 Health -= TickDamage / 2;
             }
-            else if (Hydration >= 100 && Hunger >= 100) {}
-
-            Health += HealthTick;
+            else if (Hydration >= 100 && Hunger >= 100)
+            {
+                Health += HealthTick;
+            }
 
             if (Random.Range(0, 100) >= 50)
             {
