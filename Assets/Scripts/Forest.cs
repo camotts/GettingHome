@@ -54,7 +54,8 @@ public class Forest : MonoBehaviour
                 Vector3 vec = new Vector3(xPos, yPos - 0.01f, zPos);
 
                 GameObject toInstanciate = trees[Random.Range(0, trees.Length)];
-                GameObject instance = Instantiate(toInstanciate, vec, Quaternion.identity);
+                GameObject instance = Instantiate(toInstanciate, vec, Quaternion.Euler(0, Random.Range(0, 360), 0));
+                //instance.transform.rotation = Random.rotation;
                 instance.transform.SetParent(forestHolder);
             }
 
