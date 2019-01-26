@@ -8,6 +8,7 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="EnemyManager.cs" t="Include" />
         <e p="Entity.cs" t="Include" />
         <e p="FREE Food Pack" t="Include">
           <e p="Shaders" t="Include">
@@ -17,7 +18,9 @@
         <e p="FruitBasket.cs" t="Include" />
         <e p="IDrinkable.cs" t="Include" />
         <e p="IEatable.cs" t="Include" />
+        <e p="IEnemy.cs" t="Include" />
         <e p="IInteractable.cs" t="Include" />
+        <e p="IWeapon.cs" t="Include" />
         <e p="LazyFog" t="Include">
           <e p="Instructions.txt" t="Include" />
           <e p="Scripts" t="Include">
@@ -277,6 +280,7 @@
             <e p="Readme.txt" t="Include" />
           </e>
         </e>
+        <e p="Stick.cs" t="Include" />
         <e p="Tiger.cs" t="Include" />
         <e p="UrbanNightSky" t="Include">
           <e p="Readme.txt" t="Include" />

@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 1644820414655975860}
   - component: {fileID: 3419375924346295411}
   - component: {fileID: 2401882325924663965}
+  - component: {fileID: 1783394115881616579}
   m_Layer: 0
   m_Name: FoodCrate
   m_TagString: Feeder
@@ -92,6 +93,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Feed: 10
+--- !u!65 &1783394115881616579
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3539825044850520792}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.4824891, y: 1, z: 1.7686443}
+  m_Center: {x: 0.022994757, y: 0, z: 0.016113281}
 --- !u!1 &8767487832018486124
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,7 +363,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012085495394, guid: 3245fc5926a7535429f2989cab01a844, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.00244
+      value: 0.0023
       objectReference: {fileID: 0}
     - target: {fileID: 4000012085495394, guid: 3245fc5926a7535429f2989cab01a844, type: 3}
       propertyPath: m_LocalPosition.z
