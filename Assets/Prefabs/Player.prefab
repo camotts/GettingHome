@@ -68,8 +68,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_IsWalking: 0
-  m_WalkSpeed: 5
-  m_RunSpeed: 10
+  m_WalkSpeed: 7
+  m_RunSpeed: 15
   m_RunstepLenghten: 0.7
   m_JumpSpeed: 10
   m_StickToGroundForce: 10
@@ -845,16 +845,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 277636072739537621}
     m_Modifications:
-    - target: {fileID: 6003002883792990026, guid: 968e133fef8fbcf4fb792c8c306ebb1e,
-        type: 3}
-      propertyPath: m_Name
-      value: stick 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6003002883792990026, guid: 968e133fef8fbcf4fb792c8c306ebb1e,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     - target: {fileID: 7501272588090419276, guid: 968e133fef8fbcf4fb792c8c306ebb1e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -909,6 +899,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6003002883792990026, guid: 968e133fef8fbcf4fb792c8c306ebb1e,
+        type: 3}
+      propertyPath: m_Name
+      value: stick 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6003002883792990026, guid: 968e133fef8fbcf4fb792c8c306ebb1e,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 968e133fef8fbcf4fb792c8c306ebb1e, type: 3}

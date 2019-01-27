@@ -64,7 +64,10 @@ public class HintManager : MonoBehaviour
         foreach (int num in range)
         {
             currPoint = Vector3.MoveTowards(currPoint, PlayerManager.player.transform.position, splits);
-            PointsLocations[num] = new Vector3(currPoint.x, terrain.SampleHeight(new Vector3(currPoint.x, 0, currPoint.z)), currPoint.z);
+            currPoint.x += Random.Range(0, 4000 - PlayerManager.player.transform.position.x);
+            currPoint.z += Random.Range(0, 4000 - PlayerManager.player.transform.position.z);
+            currPoint.y = terrain.SampleHeight(new Vector3(currPoint.x, 0, currPoint.z));
+            PointsLocations[num] = new Vector3(currPoint.x, currPoint.y, currPoint.z);
             Debug.LogFormat("Creating points {0} at ({1},{2},{3})", num+1, currPoint.x, currPoint.y, currPoint.z);
             var inst = Instantiate(RandomizedStages[Random.Range(0, RandomizedStages.Length)], PointsLocations[num], Quaternion.Euler(0, Random.Range(0, 360), 0));
             inst.transform.SetParent(hintHolder);
