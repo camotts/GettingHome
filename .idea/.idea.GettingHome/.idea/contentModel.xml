@@ -40,6 +40,7 @@
         </e>
         <e p="PlayerManager.cs" t="Include" />
         <e p="Scripts" t="Include">
+          <e p="BellaLuna.cs" t="Include" />
           <e p="EnemyManager.cs" t="Include" />
           <e p="Entity.cs" t="Include" />
           <e p="FogToggle.cs" t="Include" />
@@ -60,6 +61,7 @@
           <e p="RandomSpawn.cs" t="Include" />
           <e p="Stages.cs" t="Include" />
           <e p="Stick.cs" t="Include" />
+          <e p="Sun.cs" t="Include" />
           <e p="Tiger.cs" t="Include" />
           <e p="Well.cs" t="Include" />
         </e>
