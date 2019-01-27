@@ -23,7 +23,7 @@ public class EnemyManager : MonoBehaviour
 
     private List<GameObject> EnemyPrefabs = new List<GameObject>();
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         foreach (var pref in EnemyPrefabsUser)
         {
@@ -39,7 +39,7 @@ public class EnemyManager : MonoBehaviour
             }
             EnemyPrefabs.Add(pref);
         }
-        player = GameObject.FindWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
         terrain = GameObject.FindGameObjectWithTag("Terrain").GetComponent<Terrain>();
         enemyHolder = new GameObject("Enemies").transform;
         if (EnemyPrefabs.Count > 0)

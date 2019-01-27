@@ -14,7 +14,6 @@ public class Forest : MonoBehaviour
     public float highChance = 1.0f;
     public int numTrees = 100000;
 
-    //public GameObject tree_2;
     private Transform forestHolder;
 
     private Terrain terrain;

@@ -8,7 +8,7 @@ public class RandomSpawn : MonoBehaviour
 {	
 	public GameObject Player;
 	public GameObject House;
-	public float XPos, YPos, ZPos;
+	private float XPos, YPos, ZPos;
 	
 	private Terrain terrain;
 	private Vector3 terrainArea;
@@ -25,7 +25,7 @@ public class RandomSpawn : MonoBehaviour
 		ZPos = Random.Range(0, ZMax);
 	    YPos = terrain.SampleHeight(new Vector3(XPos, 0, ZPos));
 		
-		Vector3 v = new Vector3(XPos, YPos, ZPos);
+		Vector3 v = new Vector3(XPos, YPos+0.1f, ZPos);
 		var ply = Instantiate(Player, v, Quaternion.identity);
 	    HintManager.Instance.AddPlayer();
 	    PlayerManager.player = ply;

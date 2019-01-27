@@ -105,6 +105,7 @@ public class Player : MonoBehaviour, Entity
 
         if (Health <= 0)
         {
+            SceneManager.LoadScene("GameOver");
             //die("You fell asleep... Try again in a bit");
         }
     }
@@ -227,7 +228,7 @@ public class Player : MonoBehaviour, Entity
     {
         if (other.CompareTag("Hydrator"))
         {
-                drinkRef = null;
+            drinkRef = null;
         }
         if (other.CompareTag("Feeder"))
         {

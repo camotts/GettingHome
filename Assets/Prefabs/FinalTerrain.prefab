@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1130082459}
   - component: {fileID: 1459070405}
   - component: {fileID: 1459070406}
+  - component: {fileID: 5743272976811636855}
   - component: {fileID: 4118919664837700460}
   m_Layer: 8
   m_Name: FinalTerrain
@@ -136,16 +137,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 574340028d855b74095c7ae699811431, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NumStages: 5
-  DistanceBetweenPoints: 150
-  RandomizedStages:
-  - {fileID: 9114679581555293753, guid: 3297268128226cf49bb537f375867126, type: 3}
-  PointsLocations:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+--- !u!114 &5743272976811636855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130082458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa6a8f2578a0bd64bb4789fcbfea3c1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 224564136, guid: 8c03751fbafb4374db466432dc3948e6, type: 3}
+  House: {fileID: 5291187971090424311, guid: f9f25ac132de792418f6bfe6b252bd1d, type: 3}
 --- !u!114 &4118919664837700460
 MonoBehaviour:
   m_ObjectHideFlags: 0
