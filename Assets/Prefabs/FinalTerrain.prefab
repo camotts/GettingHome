@@ -12,8 +12,11 @@ GameObject:
   - component: {fileID: 1130082461}
   - component: {fileID: 1130082460}
   - component: {fileID: 1130082459}
-  m_Layer: 0
-  m_Name: FinalTerrain 1
+  - component: {fileID: 1459070405}
+  - component: {fileID: 1459070406}
+  - component: {fileID: 4118919664837700460}
+  m_Layer: 8
+  m_Name: FinalTerrain
   m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -94,10 +97,70 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trees:
   - {fileID: 4308340566162334788, guid: 9e5d23b2713f6b247bcb25fb7ac86101, type: 3}
+  - {fileID: 1077533374901069688, guid: ab0ed3f568313f14b8eb363bdd37333a, type: 3}
   - {fileID: 1424884189442338928, guid: 16a034dcc5efb03459cbf857104a28b6, type: 3}
   lowRange: 200
   midRange: 300
   lowChance: 60
   midChance: 40
   highChance: 0
-  numTrees: 100000
+  numTrees: 400000
+--- !u!114 &1459070405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130082458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df1ad8e1e3db59940bcd4fabc9b1c2dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SpawnCounts:
+  - prefab: {fileID: 3630071010595913117, guid: a81474d2d2f4923408f2623d8c68163d,
+      type: 3}
+    count: 100
+  - prefab: {fileID: 3539825044850520792, guid: 64c003f3bbf1add4b978959fb8e16cfd,
+      type: 3}
+    count: 100
+--- !u!114 &1459070406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130082458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 574340028d855b74095c7ae699811431, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NumStages: 5
+  DistanceBetweenPoints: 150
+  RandomizedStages:
+  - {fileID: 9114679581555293753, guid: 3297268128226cf49bb537f375867126, type: 3}
+  PointsLocations:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+--- !u!114 &4118919664837700460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1130082458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56e8c510ae61c1149b30c607b4ec2cc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyPrefabsUser:
+  - {fileID: 2913402151697986757, guid: 88f1d6ef19c7c3a4190f4a7d3b950eca, type: 3}
+  Enemies: []
+  MaxEnemies: 15
+  DetectionDist: 150
+  MaxAliveDist: 1000

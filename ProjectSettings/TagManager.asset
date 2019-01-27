@@ -8,6 +8,8 @@ TagManager:
   - Feeder
   - Enemy
   - Weapon
+  - Terrain
+  - Hint
   layers:
   - Default
   - TransparentFX

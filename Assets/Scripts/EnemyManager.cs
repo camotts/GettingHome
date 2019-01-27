@@ -66,6 +66,11 @@ public class EnemyManager : MonoBehaviour
             {
                 toRemove.Add(enemy);
             }
+            
+            if(enemy.GetComponent<Entity>().GetHealth() <= 0)
+            {
+                toRemove.Add(enemy);
+            }
         }
 
         foreach (var del in toRemove)

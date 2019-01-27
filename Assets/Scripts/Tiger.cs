@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class Tiger : MonoBehaviour, Entity, IEnemy
 {
     private NavMeshAgent agent;
+    [SerializeField] float Health = 100;
     [SerializeField] private float DamageDeal = 10f;
     [SerializeField] private float Cooldown = 10f;
 
@@ -40,7 +41,12 @@ public class Tiger : MonoBehaviour, Entity, IEnemy
 
     public void Damage(float hit)
     {
-        Destroy(gameObject);
+        Health -= hit;
+    }
+
+    public float GetHealth()
+    {
+        return Health;
     }
 
     public void SetTarget(GameObject target)

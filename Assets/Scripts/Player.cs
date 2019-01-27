@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.Mime;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.FirstPerson;
 using Random = UnityEngine.Random;
 
 public class Player : MonoBehaviour, Entity
@@ -15,6 +17,7 @@ public class Player : MonoBehaviour, Entity
     [SerializeField] private float Cooldown = 1;
     [SerializeField] private float TickDamage = 0.5f;
     [SerializeField] private float HealthTick = 5;
+    [SerializeField] private Shader grayscaleShader;
 
     private float currCooldown;
     private IDrinkable drinkRef;
@@ -102,7 +105,7 @@ public class Player : MonoBehaviour, Entity
 
         if (Health <= 0)
         {
-            die();
+            //die("You fell asleep... Try again in a bit");
         }
     }
     
@@ -139,9 +142,28 @@ public class Player : MonoBehaviour, Entity
         ModifyHealth(-hit);
     }
 
-    private void die()
+    public float GetHealth()
     {
-        
+        return Health;
+    }
+
+    private void die(string endText)
+    {
+        InteractionText.text = endText;
+        InteractionText.gameObject.SetActive(true);
+        this.enabled = false;
+        gameObject.GetComponent<FirstPersonController>().enabled = false;
+        Invoke("loadTitle", 5);
+    }
+
+    public void FallOffLedge()
+    {
+        die("Flat Earthers: 1. Everyone else: 0");
+    }
+
+    private void loadTitle()
+    {
+        SceneManager.LoadScene("Title");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -185,9 +207,20 @@ public class Player : MonoBehaviour, Entity
             {
                 ModifyHunger(foodRef.Eat());
                 foodRef = null;
-                InteractionText.gameObject.SetActive(false);
+                
             }
         }
+
+        var hint = other.GetComponent<IHintable>();
+        if (Input.GetButton("Interact"))
+        {
+            var success = hint?.CollectHint();
+            if ( success != null && (bool) success)
+            {
+                InteractionText.gameObject.SetActive(false);
+            } //Tell the player they messed up?
+        }
+
     }
 
     private void OnTriggerExit(Collider other)

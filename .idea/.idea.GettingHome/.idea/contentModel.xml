@@ -8,11 +8,27 @@
       <e p="Assembly-CSharp-firstpass.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Almgp_particle_vol_1" t="Include">
+          <e p="Readme.txt" t="Include" />
+          <e p="script" t="Include">
+            <e p="sprite_sheet.cs" t="Include" />
+          </e>
+          <e p="Shaders" t="Include">
+            <e p="emmision_particle.shader" t="Include" />
+            <e p="face_power_particle.shader" t="Include" />
+            <e p="mesh_dissolve_particel.shader" t="Include" />
+            <e p="multypower_particle.shader" t="Include" />
+          </e>
+        </e>
+        <e p="BasicHint.cs" t="Include" />
+        <e p="FlatEarth.cs" t="Include" />
         <e p="FREE Food Pack" t="Include">
           <e p="Shaders" t="Include">
             <e p="Food.shader" t="Include" />
           </e>
         </e>
+        <e p="HintManager.cs" t="Include" />
+        <e p="House.cs" t="Include" />
         <e p="LazyFog" t="Include">
           <e p="Instructions.txt" t="Include" />
           <e p="Scripts" t="Include">
@@ -33,8 +49,11 @@
           <e p="IDrinkable.cs" t="Include" />
           <e p="IEatable.cs" t="Include" />
           <e p="IEnemy.cs" t="Include" />
+          <e p="IHintable.cs" t="Include" />
           <e p="IInteractable.cs" t="Include" />
           <e p="IWeapon.cs" t="Include" />
+          <e p="LoadGame.cs" t="Include" />
+          <e p="MassSpawner.cs" t="Include" />
           <e p="MinimapController.cs" t="Include" />
           <e p="MinimapSymbol.cs" t="Include" />
           <e p="Player.cs" t="Include" />
@@ -287,6 +306,9 @@
           <e p="water well" t="Include">
             <e p="Readme.txt" t="Include" />
           </e>
+        </e>
+        <e p="Textures" t="Include">
+          <e p="Grayscale.shader" t="Include" />
         </e>
         <e p="UrbanNightSky" t="Include">
           <e p="Readme.txt" t="Include" />
